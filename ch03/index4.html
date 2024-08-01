@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .flex-container{
+            display: flex;
+            height: 200px;
+            /*이미지가 벗어나는 부분 숨기기*/
+            overflow: hidden;
+        }
+        .flex-item{
+            flex:1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+        .flex-item img{
+            width: 100%;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            visibility: hidden;
+        }
+        .flex-item img.active{
+                opacity: 1;
+                visibility: visible;
+                
+        }
+    </style>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="flex-item">
+            <button class="button prev-btn">prev</button>
+        </div>
+        <div class="flex-item">
+            <img src="../ch01/images/image2.png"  class="active" alt="">
+            <img src="../ch01/images/image1.png" class="active" alt="">
+            
+        </div>
+        <div class="flex-item">
+        <button class="button next-btn">next</button>
+        </div>
+
+    </div>
+
+    <script>
+        let images = document.querySelectorAll(".flex-item img ");
+        let currentIndex=1;
+
+        // 방어적 코드
+        
+        document.querySelector(".prev-btn").addEventListener("click", () => {
+            images[currentIndex].classList.remove("active");
+            
+            currentIndex=currentIndex -1;
+            // 방어적 코드 작성 0에서 -1하면 오류발생
+            if(currentIndex <0){
+                currentIndex=images.length-1;
+            }
+            images[currentIndex].classList.add("active");
+
+            /* 강사님 코드*/
+            // images[currentIndex].classList.remove("active");
+            
+            // currentIndex=currentIndex -1;
+            // // 방어적 코드 작성 0에서 -1하면 오류발생
+            // if(currentIndex <0){
+            //     currentIndex+=images.length;
+            // }
+            // // 새로운 currentIndex값으로 지정된 녀석을 활용해서 클래스 속성 active를 추가
+            // images[currentIndex].classList.add("active");
+            
+            console.log("앞으로가기")
+        });
+        document.querySelector(".next-btn").addEventListener("click", () =>{
+            images[currentIndex].classList.remove("active");
+            currentIndex=currentIndex +1;
+            // 방어적 코드 작성 0에서 -1하면 오류발생
+            // images.length(길이는 인덱스가 아님) <-- 2가 나옴
+            if(currentIndex >images.length-1){
+                currentIndex=0 ;
+            }
+            images[currentIndex].classList.add("active");
+
+                        /* 강사님 코드*/
+            // images[currentIndex].classList.remove("active");
+            
+            // currentIndex=currentIndex +1;
+            // if(currentIndex >images.length-1){
+            //     currentIndex+=images.length;
+            // }
+            // // 새로운 currentIndex값으로 지정된 녀석을 활용해서 클래스 속성 active를 추가
+            // images[currentIndex].classList.add("active");
+        });
+        
+    </script>
+</body>
+</html>

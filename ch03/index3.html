@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    body{
+        display: flex;
+        justify-content: center;
+    }
+    .like-heart{
+        font-size: 40px;
+        color: grey;
+        cursor: pointer;
+        transition: color 1s ease, transform 1s ease;
+    }
+    .like-heart.liked{
+        color: red;
+        /* css애니메이션효과 */
+        transform: scale(1.5);
+    }
+</style>
+</head>
+<body>
+        <span class="like-heart" onclick="likeToggle(this)">&#9825;</span>
+        <span class="like-heart" onclick="likeToggle(this)">&#9825;</span>
+        <span class="like-heart" onclick="likeToggle(this)">&#9825;</span>
+        <br>
+        <script>
+            function likeToggle(el){
+                el.classList.toggle("liked");
+                
+                // let likeHeart=document.querySelector(".like-heart");
+                // console.log("likeHeart ",likeHeart);
+                // console.log(typeof likeHeart);
+                // console.log(likeHeart);
+                // likeHeart.style.fontSize="40px";
+                // // 토글기능--> 상태값 저장(변수) - !부정 -->삼항연산자를
+                // likeHeart.classList.toggle("liked");
+            }
+            
+            // let elements=document.getElementById("example");
+            // console.log(elements);
+            // console.log(typeof elements);
+        </script>
+</body>
+</html>
